@@ -1,4 +1,6 @@
 import React from "react";
+import ToDoList from "./components/TodoComponents/ToDoList";
+import ToDoForm from "./components/TodoComponents/ToDoForm";
 
 class App extends React.Component {
   state = {
@@ -49,51 +51,28 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
-      <div className="ui two column centered grid">
-        <div className="row">
-          <div className="column">
-            <form onSubmit={this.addNewItem} onReset={this.clearCompletedItems}>
-              <div className="ui fluid action input">
-                <input
-                  onChange={this.handleInputChange}
-                  value={this.state.textInput}
-                  type="text"
-                  placeholder="new item..."
-                />
-                <button type="submit" className="ui teal button">
-                  Add Item
-                </button>
-                <button type="reset" className="ui button">
-                  Clear Completed Tasks
-                </button>
-              </div>
-              {this.state.error && (
-                <div class="ui red message">{this.state.error}</div>
-              )}
-            </form>
+      <div id="App">
+        <div className="ui two column centered grid container">
+          <div className="row">
+            <div className="column">
+              <h2 class="ui center aligned icon header">
+                <i class="circular tasks icon"></i>
+                Let me do this!
+              </h2>
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="column">
-            {this.state.toDoList.map(item => (
-              <div
-                className={`ui fluid ${
-                  item.completed ? `green inverted` : ""
-                } vertical menu`}
-              >
-                <a
-                  key={item.id}
-                  className="item"
-                  onClick={() => this.markCompleted(item.id)}
-                >
-                  {item.task}
-                  {item.completed ? <i className="check icon white"></i> : null}
-                </a>
-              </div>
-            ))}
-          </div>
+          <ToDoForm
+            textInput={this.state.textInput}
+            error={this.state.error}
+            addNewItem={this.addNewItem}
+            clearCompletedItems={this.clearCompletedItems}
+            handleInputChange={this.handleInputChange}
+          />
+          <ToDoList
+            toDoList={this.state.toDoList}
+            markCompleted={this.markCompleted}
+          />
         </div>
       </div>
     );
