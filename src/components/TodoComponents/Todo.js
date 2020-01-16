@@ -10,7 +10,7 @@ class ToDo extends React.Component {
         className={`ui ${completed && `teal`} button`}
         onClick={() => markCompleted(id)}
       >
-        {completed && <i className="check icon white"></i>}
+        <i className={`circle ${completed ? "check" : "outline"} icon`}></i>
         {task}
       </button>
     );
