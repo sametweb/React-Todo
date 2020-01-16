@@ -22,7 +22,7 @@ class ToDoForm extends React.Component {
                 placeholder="new item..."
               />
               <button type="submit" className="ui teal button">
-                Add Item
+                Add Task
               </button>
               <button type="reset" className="ui button">
                 Clear Completed Tasks
