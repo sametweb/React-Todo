@@ -19,7 +19,7 @@ class ToDoForm extends React.Component {
                 onChange={handleInputChange}
                 value={textInput}
                 type="text"
-                placeholder="new item..."
+                placeholder="new task..."
               />
               <button type="submit" className="ui teal button">
                 Add Task
