@@ -9,6 +9,14 @@ class App extends React.Component {
     toDoList: []
   };
 
+  componentDidMount() {
+    this.setState(JSON.parse(localStorage.getItem("state")));
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("state", JSON.stringify(this.state));
+  }
+
   handleInputChange = e => {
     this.setState({
       ...this.state,
